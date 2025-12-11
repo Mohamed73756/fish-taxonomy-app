@@ -29,11 +29,11 @@ st.markdown("**:blue[{}]** Total Fish Species Records Indexed".format(len(df_fis
 st.sidebar.header("Filter by Order")
 selected_order = st.sidebar.selectbox(
     "Choose a specific Order:", 
-    df_fish['Order'].unique()
+    df_['Order'].unique()
 )
 
 # Filter the DataFrame based on the selected Order
-df_order = df_fish[df_fish['Order'] == selected_order]
+df_order = df_[df_['Order'] == selected_order]
 
 st.subheader(f"Order: {selected_order}")
 
@@ -45,21 +45,21 @@ for family in families:
     with st.expander(f"**Family: {family}** ({len(df_order[df_order['Family'] == family])} Species)"):
         df_family = df_order[df_order['Family'] == family].copy()
         
-        # Clean up the fish name display for the species list
-        # We assume the Genus and Species are in the same 'Fish' column after cleaning
+        # Clean up the  name display for the species list
+        # We assume the Genus and Species are in the same '' column after cleaning
         species_list = df_family['Species_Scientific'].tolist()
         
         # Display the list of species
         st.write("**:gray[Species List:]**")
         
-        # Create a dictionary to group Species by their Genus (extracted from 'Fish' column)
+        # Create a dictionary to group Species by their Genus (extracted from '' column)
         genus_groups = df_family.groupby(df_family['Species_Scientific'].str.split().str[0])
         
         for genus, group in genus_groups:
             st.markdown(f"**Genus: {genus}**")
             for index, row in group.iterrows():
                 # Display only the species name, assuming the genus is already displayed
-                species_only = row['Fish'].split(genus, 1)[-1].strip()
+                species_only = row['Species_Scientific'].split(genus, 1)[-1].strip()
                 st.markdown(f"- *{genus} {species_only}*")
 
 # --- OPTIONAL: RAW DATA VIEW ---
@@ -67,4 +67,5 @@ if st.checkbox('Show Raw Data Table'):
     st.dataframe(df_fish)
 
 # --- End of Streamlit App ---
+
 
