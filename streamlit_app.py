@@ -47,7 +47,7 @@ for family in families:
         
         # Clean up the fish name display for the species list
         # We assume the Genus and Species are in the same 'Fish' column after cleaning
-        species_list = df_family['Fish'].tolist()
+        species_list = df_family['Species_Scientific'].tolist()
         
         # Display the list of species
         st.write("**:gray[Species List:]**")
