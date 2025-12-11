@@ -53,7 +53,7 @@ for family in families:
         st.write("**:gray[Species List:]**")
         
         # Create a dictionary to group Species by their Genus (extracted from 'Fish' column)
-        genus_groups = df_family.groupby(df_family['Fish'].str.split().str[0])
+        genus_groups = df_family.groupby(df_family['Species_Scientific'].str.split().str[0])
         
         for genus, group in genus_groups:
             st.markdown(f"**Genus: {genus}**")
@@ -67,3 +67,4 @@ if st.checkbox('Show Raw Data Table'):
     st.dataframe(df_fish)
 
 # --- End of Streamlit App ---
+
