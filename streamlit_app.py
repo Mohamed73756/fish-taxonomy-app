@@ -29,7 +29,7 @@ st.markdown("**:blue[{}]** Total Fish Species Records Indexed".format(len(df_fis
 st.sidebar.header("Filter by Order")
 selected_order = st.sidebar.selectbox(
     "Choose a specific Order:", 
-    df_['Order'].unique()
+    df_fish['Order'].unique()
 )
 
 # Filter the DataFrame based on the selected Order
@@ -67,5 +67,6 @@ if st.checkbox('Show Raw Data Table'):
     st.dataframe(df_fish)
 
 # --- End of Streamlit App ---
+
 
 
