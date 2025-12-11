@@ -33,7 +33,7 @@ selected_order = st.sidebar.selectbox(
 )
 
 # Filter the DataFrame based on the selected Order
-df_order = df_[df_['Order'] == selected_order]
+df_order = df_fish[df_fish['Order'] == selected_order]
 
 st.subheader(f"Order: {selected_order}")
 
@@ -67,6 +67,7 @@ if st.checkbox('Show Raw Data Table'):
     st.dataframe(df_fish)
 
 # --- End of Streamlit App ---
+
 
 
 
